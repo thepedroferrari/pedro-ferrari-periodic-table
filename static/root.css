@@ -1,5 +1,9 @@
 :root {
+  /* <-- Global */
+  --font-family: 'Quantico', Helvetica, Arial, sans-serif;
+
   /* COLOURS */
+
   --black: hwb(210 0% 85%);
   --white: #fff;
 
@@ -26,4 +30,5 @@
 body {
   background-color: var(--bg);
   color: var(--white);
+  font-family: var(--font-family);
 }

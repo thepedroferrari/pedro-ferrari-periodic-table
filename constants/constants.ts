@@ -810,9 +810,9 @@ export const elements: Record<ElementKey, Element> = {
     category: Categories.INTERESTS,
     fluency: 1,
   },
-  programming: {
-    name: 'Programming',
-    shortName: 'Programming',
+  coding: {
+    name: 'Coding',
+    shortName: 'Coding',
     category: Categories.INTERESTS,
     fluency: 1,
   },

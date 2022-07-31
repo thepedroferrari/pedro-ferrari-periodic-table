@@ -168,10 +168,7 @@ export const PeriodicTable = () => {
         elementKey={ElementKey['privacy-security']}
         position="i16"
       />
-      <PeriodicTableElement
-        elementKey={ElementKey.programming}
-        position="i17"
-      />
+      <PeriodicTableElement elementKey={ElementKey.coding} position="i17" />
     </div>
   );
 };

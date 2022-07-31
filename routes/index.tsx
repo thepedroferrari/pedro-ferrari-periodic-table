@@ -10,6 +10,16 @@ const Head = () => (
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Passionate Frontend Developer" />
     <title>Pedro Ferrari: @thepedroferrari</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossOrigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/normalise.css" />
     <link rel="stylesheet" href="/root.css" />
     <link rel="stylesheet" href="/style.css" />

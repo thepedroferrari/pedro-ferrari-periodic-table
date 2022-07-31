@@ -133,7 +133,7 @@ export enum ElementKey {
   marketing = 'marketing',
   nonprofit = 'nonprofit',
   'privacy-security' = 'privacy-security',
-  programming = 'programming',
+  coding = 'coding',
   astro = 'astro',
   typeORM = 'typeORM',
   agile = 'agile',
