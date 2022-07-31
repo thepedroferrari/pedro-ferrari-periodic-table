@@ -13,14 +13,8 @@ interface Props {
 export const PeriodicTableElement = ({ elementKey, position }: Props) => {
   const { shortName, category } = elements[elementKey];
   return (
-    <li
-      class={category}
-      style={{
-        gridArea: position,
-        '--hover-color': `var(--hover-${elementKey}-color)`,
-      }}
-    >
-      {shortName}
+    <li class={category} style={{ gridArea: position }}>
+      <span>{shortName}</span>
     </li>
   );
 };

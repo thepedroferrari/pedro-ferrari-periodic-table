@@ -1,4 +1,29 @@
 :root {
-  --hover-color: #f0f0f0;
-  --hover-typescript-color: #0078d4;
+  /* COLOURS */
+  --black: hwb(210 0% 85%);
+  --white: #fff;
+
+  --bg: var(--black);
+  --typescript-color: #0078d4;
+  --javascript-color: hwb(52 31% 6%);
+
+  --color-build: #000000;
+  --color-cloud: #000000;
+  --color-databases: #000000;
+  --color-framework: #000000;
+  --color-interests: #000000;
+  --color-library: #000000;
+  --color-other: #000000;
+  --color-programming-language: var(--typescript-color);
+  --color-saas-paas: #000000;
+  --color-server: #000000;
+  --color-want-to-learn: #000000;
+
+  /* COLUMNS */
+  --periodic-table-columns: 18;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--white);
 }

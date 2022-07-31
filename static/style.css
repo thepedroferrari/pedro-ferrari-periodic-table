@@ -12,18 +12,58 @@
     'h01 h02 h03 h04 h05 h06 h07 h08 h09 h10 h11 h12 h13 h14 h15 h16 h17 h18'
     'i01 i02 i03 i04 i05 i06 i07 i08 i09 i10 i11 i12 i13 i14 i15 i16 i17 i18';
 
-  grid-column: 50px;
-  gap: 1px;
+  gap: 10px;
+  grid-template-columns: repeat(var(--periodic-table-columns), 1fr);
 }
 
 .periodic-table li {
   list-style: none;
-  border: 1px solid #ccc;
+  border: 4px solid var(--bg);
+  border-radius: 8px;
   place-content: center;
   display: grid;
-  height: 50px;
+  height: 5rem;
+}
+.periodic-table li:hover {
+  background-color: var(--bg);
+  transform: scale(1.5);
 }
 
-.periodic-table li:hover {
-  background-color: var(--hover-color);
+.periodic-table li span {
+  text-align: center;
+}
+
+/* Hacking variables */
+.periodic-table li.build {
+  --bg: var(--color-build);
+}
+.periodic-table li.cloud {
+  --bg: var(--color-cloud);
+}
+.periodic-table li.databases {
+  --bg: var(--color-databases);
+}
+.periodic-table li.framework {
+  --bg: var(--color-framework);
+}
+.periodic-table li.interests {
+  --bg: var(--color-interests);
+}
+.periodic-table li.library {
+  --bg: var(--color-library);
+}
+.periodic-table li.other {
+  --bg: var(--color-other);
+}
+.periodic-table li.programming-language {
+  --bg: var(--color-programming-language);
+}
+.periodic-table li.saas-paas {
+  --bg: var(--color-saas-paas);
+}
+.periodic-table li.server {
+  --bg: var(--color-server);
+}
+.periodic-table li.want-to-learn {
+  --bg: var(--color-want-to-learn);
 }

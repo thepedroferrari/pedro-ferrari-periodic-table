@@ -5,13 +5,13 @@ export const elements: Record<ElementKey, Element> = {
   // PROGRAMMING LANGUAGE
   typescript: {
     name: 'TypeScript',
-    shortName: 'TS',
+    shortName: 'TypeScript',
     category: Categories.PROGRAMMING_LANGUAGE,
     fluency: 6,
   },
   javascript: {
     name: 'JavaScript',
-    shortName: 'JS',
+    shortName: 'JavaScript',
     category: Categories.PROGRAMMING_LANGUAGE,
     fluency: 6,
   },
