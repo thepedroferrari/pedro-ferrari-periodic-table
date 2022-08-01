@@ -4,24 +4,24 @@
 
   /* COLOURS */
 
-  --black: hwb(210 0% 85%);
+  --black: hwb(200 1% 72%);
   --white: #fff;
 
   --bg: var(--black);
-  --typescript-color: #0078d4;
+  --typescript-color: hwb(206 0% 17%);
   --javascript-color: hwb(52 31% 6%);
 
-  --color-build: #000000;
-  --color-cloud: #000000;
-  --color-databases: #000000;
-  --color-framework: #000000;
-  --color-interests: #000000;
-  --color-library: #000000;
-  --color-other: #000000;
+  --color-build: hwb(199 56% 10%);
+  --color-cloud: hwb(191 89% 0%);
+  --color-databases: hwb(43 1% 0%);
+  --color-framework: hwb(193 38% 2%);
+  --color-interests: hwb(355 22% 10%);
+  --color-library: hwb(12 32% 9%);
+  --color-other: hwb(218 55% 32%);
   --color-programming-language: var(--typescript-color);
-  --color-saas-paas: #000000;
-  --color-server: #000000;
-  --color-want-to-learn: #000000;
+  --color-saas-paas: hwb(173 16% 38%);
+  --color-server: hwb(198 0% 54%);
+  --color-want-to-learn: hwb(272 14% 25%);
 
   /* COLUMNS */
   --periodic-table-columns: 18;

@@ -2,10 +2,25 @@
 import { h } from 'preact';
 import { ElementKey } from '../../types/element.ts';
 import { PeriodicTableElement } from './PeriodicTableElement.tsx';
+import { Categories } from '../../types/categories.ts';
 
 export const PeriodicTable = () => {
   return (
-    <div class="periodic-table">
+    <section class="periodic-table">
+      <header>
+        <h1>Periodic Table of Knowledge</h1>
+        <p>Stuff</p>
+      </header>
+      <form>
+        <div class="category">
+          {Object.keys(Categories).map((category) => (
+            <span>{category}</span>
+          ))}
+        </div>
+        <div class="level">
+          <span>Group 2</span>
+        </div>
+      </form>
       {/* // FRONTEND? PROGRAMMING LANGUAGES */}
       <PeriodicTableElement elementKey={ElementKey.typescript} position="a01" />
       <PeriodicTableElement elementKey={ElementKey.javascript} position="b01" />
@@ -169,6 +184,6 @@ export const PeriodicTable = () => {
         position="i16"
       />
       <PeriodicTableElement elementKey={ElementKey.coding} position="i17" />
-    </div>
+    </section>
   );
 };
