@@ -8,8 +8,6 @@
   --white: #fff;
 
   --bg: var(--black);
-  --typescript-color: hwb(206 0% 17%);
-  --javascript-color: hwb(52 31% 6%);
 
   --color-build: hwb(199 56% 10%);
   --color-cloud: hwb(191 89% 0%);
@@ -18,7 +16,7 @@
   --color-interests: hwb(355 22% 10%);
   --color-library: hwb(12 32% 9%);
   --color-other: hwb(218 55% 32%);
-  --color-programming-language: var(--typescript-color);
+  --color-programming-language: hwb(206 0% 17%);
   --color-saas-paas: hwb(173 16% 38%);
   --color-server: hwb(198 0% 54%);
   --color-want-to-learn: hwb(272 14% 25%);

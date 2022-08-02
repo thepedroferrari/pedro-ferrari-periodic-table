@@ -47,6 +47,8 @@
 .periodic-table > li:hover {
   background-color: var(--bg);
   transform: scale(1.5);
+  z-index: 1;
+  transition: all 0.2s;
 }
 
 .periodic-table > li span {
@@ -58,14 +60,23 @@
 .periodic-table .build {
   --bg: var(--color-build);
 }
+.periodic-table .build:hover {
+  color: var(--black);
+}
 .periodic-table .cloud {
   --bg: var(--color-cloud);
+}
+.periodic-table .cloud:hover {
+  color: var(--black);
 }
 .periodic-table .databases {
   --bg: var(--color-databases);
 }
 .periodic-table .framework {
   --bg: var(--color-framework);
+}
+.periodic-table .framework:hover {
+  color: var(--black);
 }
 .periodic-table .interests {
   --bg: var(--color-interests);
@@ -88,3 +99,10 @@
 .periodic-table .want-to-learn {
   --bg: var(--color-want-to-learn);
 }
+
+/* input[name='build']:checked ~ :not(li.build) {
+  opacity: 0.5;
+}
+input[name='build']:checked ~ :not(li.build):hover {
+  transform: unset;
+} */
