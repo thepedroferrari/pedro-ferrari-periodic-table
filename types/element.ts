@@ -2,7 +2,7 @@ import { Categories } from './categories.ts';
 
 export interface Element {
   name: string;
-  shortName: string;
+  shortName: ElementKey;
   category: Categories;
   fluency: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
@@ -104,6 +104,7 @@ export enum ElementKey {
   'digital-ocean' = 'digital-ocean',
   apache = 'apache',
   nginx = 'nginx',
+  caddy = 'caddy',
   linode = 'linode',
   apollo = 'apollo',
   relay = 'relay',
