@@ -5,6 +5,7 @@
 import * as $0 from "./routes/index.tsx";
 import * as $$0 from "./islands/FilterForm.tsx";
 import * as $$1 from "./islands/PeriodicTable.tsx";
+import * as $$2 from "./islands/PeriodicTableElement.tsx";
 
 const manifest = {
   routes: {
@@ -13,6 +14,7 @@ const manifest = {
   islands: {
     "./islands/FilterForm.tsx": $$0,
     "./islands/PeriodicTable.tsx": $$1,
+    "./islands/PeriodicTableElement.tsx": $$2,
   },
   baseUrl: import.meta.url,
 };

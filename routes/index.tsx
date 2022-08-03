@@ -1,8 +1,6 @@
 /** @jsx h */
-
-import { h, Fragment } from 'preact';
-import Counter from '../islands/Counter.tsx';
-import { PeriodicTable } from '../components/PeriodicTable/index.ts';
+import { Fragment, h } from 'preact';
+import PeriodicTable from '../islands/PeriodicTable.tsx';
 
 const Head = () => (
   <head>
@@ -20,6 +18,10 @@ const Head = () => (
       href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="stylesheet" href="/normalise.css" />
     <link rel="stylesheet" href="/root.css" />
     <link rel="stylesheet" href="/style.css" />
@@ -53,7 +55,6 @@ export default function Home() {
         </ol>
 
         <PeriodicTable />
-        <Counter start={3} />
       </main>
     </Fragment>
   );

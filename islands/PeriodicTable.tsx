@@ -1,10 +1,11 @@
 /** @jsx h */
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
-import { ElementKey } from '../types/element.ts';
-import { PeriodicTableElement } from '../components/PeriodicTable/PeriodicTableElement.tsx';
-import FilterForm from './FilterForm.tsx';
+import { PeriodicTableHeader } from '../components/PeriodicTable/PeriodicTableHeader.tsx';
 import { Categories } from '../types/categories.ts';
+import { ElementKey } from '../types/element.ts';
+import FilterForm from './FilterForm.tsx';
+import PeriodicTableElement from './PeriodicTableElement.tsx';
 
 const initialCategories: Record<Categories, boolean> = {
   build: false,
@@ -20,7 +21,7 @@ const initialCategories: Record<Categories, boolean> = {
   'want-to-learn': false,
 };
 
-export const PeriodicTable = () => {
+const PeriodicTable = () => {
   const [selectedCategories, setSelectedCategories] =
     useState(initialCategories);
   const [selectedElement, setSelectedElement] = useState<ElementKey | null>(
@@ -28,10 +29,7 @@ export const PeriodicTable = () => {
   );
   return (
     <section class="periodic-table">
-      <header>
-        <h1>Periodic Table of Knowledge</h1>
-        <p>Stuff</p>
-      </header>
+      <PeriodicTableHeader />
       <FilterForm />
       {/* // FRONTEND? PROGRAMMING LANGUAGES */}
       <PeriodicTableElement elementKey={ElementKey.typescript} position="a01" />
@@ -200,3 +198,5 @@ export const PeriodicTable = () => {
     </section>
   );
 };
+
+export default PeriodicTable;
