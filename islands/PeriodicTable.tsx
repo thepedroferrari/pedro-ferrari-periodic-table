@@ -20,6 +20,8 @@ const initialCategories: Record<Categories, boolean> = {
   server: false,
   'want-to-learn': false,
 };
+// Create context
+// remove this island
 
 const PeriodicTable = () => {
   const [selectedCategories, setSelectedCategories] =
