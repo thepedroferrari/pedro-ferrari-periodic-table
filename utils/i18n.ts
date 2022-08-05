@@ -27,3 +27,5 @@ export const i18n: I18n = {
     },
   },
 };
+
+export const getUserLanguage = (): keyof I18n => 'en';

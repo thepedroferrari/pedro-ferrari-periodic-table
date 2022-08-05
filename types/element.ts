@@ -1,10 +1,11 @@
 import { Categories } from './categories.ts';
+import { Levels } from '../constants/levels.ts';
 
 export interface Element {
   name: string;
   shortName: ElementKey;
   category: Categories;
-  fluency: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  level: Levels;
 }
 
 export enum ElementKey {

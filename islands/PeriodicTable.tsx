@@ -1,13 +1,15 @@
 /** @jsx h */
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
+import PeriodicTableElement from '../components/PeriodicTable/PeriodicTableElement.tsx';
 import { PeriodicTableHeader } from '../components/PeriodicTable/PeriodicTableHeader.tsx';
-import { Categories } from '../types/categories.ts';
 import { ElementKey } from '../types/element.ts';
 import FilterForm from './FilterForm.tsx';
-import PeriodicTableElement from './PeriodicTableElement.tsx';
 
-const initialCategories: Record<Categories, boolean> = {
+import { Categories } from '../types/categories.ts';
+
+export type Filters = Record<Categories, boolean>;
+const initialFilters: Filters = {
   build: false,
   cloud: false,
   databases: false,
@@ -20,19 +22,24 @@ const initialCategories: Record<Categories, boolean> = {
   server: false,
   'want-to-learn': false,
 };
-// Create context
-// remove this island
+
+const makeClassFromObject = (obj: Record<string, boolean>) => {
+  let classes = '';
+  Object.entries(obj).forEach(([k, v]) => {
+    if (v) {
+      classes += ` ${k}`;
+    }
+  });
+
+  return classes;
+};
 
 const PeriodicTable = () => {
-  const [selectedCategories, setSelectedCategories] =
-    useState(initialCategories);
-  const [selectedElement, setSelectedElement] = useState<ElementKey | null>(
-    null
-  );
+  const [filter, setFilter] = useState(initialFilters);
   return (
-    <section class="periodic-table">
+    <section class={`periodic-table${makeClassFromObject(filter)}`}>
       <PeriodicTableHeader />
-      <FilterForm />
+      <FilterForm setFilter={setFilter} />
       {/* // FRONTEND? PROGRAMMING LANGUAGES */}
       <PeriodicTableElement elementKey={ElementKey.typescript} position="a01" />
       <PeriodicTableElement elementKey={ElementKey.javascript} position="b01" />

@@ -2,10 +2,10 @@
   padding: 2rem;
   display: grid;
   grid-template-areas:
-    'header header header header header header header header header header header header header header header header header header'
-    'a01 a02 form form form form form form form form form form a13 a14 a15 a16 a17 a18'
-    'b01 b02 form form form form form form form form form form b13 b14 b15 b16 b17 b18'
-    'c01 c02 form form form form form form form form form form c13 c14 c15 c16 c17 c18'
+    'hed hed hed hed hed hed hed hed hed hed hed hed hed hed hed hed hed hed'
+    'a01 a02 frm frm frm frm frm frm frm frm frm frm a13 a14 a15 a16 a17 a18'
+    'b01 b02 frm frm frm frm frm frm frm frm frm frm b13 b14 b15 b16 b17 b18'
+    'c01 c02 frm frm frm frm frm frm frm frm frm frm c13 c14 c15 c16 c17 c18'
     'd01 d02 d03 d04 d05 d06 d07 d08 d09 d10 d11 d12 d13 d14 d15 d16 d17 d18'
     'e01 e02 e03 e04 e05 e06 e07 e08 e09 e10 e11 e12 e13 e14 e15 e16 e17 e18'
     'f01 f02 f03 f04 f05 f06 f07 f08 f09 f10 f11 f12 f13 f14 f15 f16 f17 f18'
@@ -18,24 +18,10 @@
   max-width: 1600px;
 }
 .periodic-table header {
-  grid-area: header;
+  grid-area: hed;
 }
 
-.periodic-table form {
-  grid-area: form;
-  display: grid;
-  grid-template-areas: 'header header header' 'subheader subheader subheader' 'category x level';
-}
-
-.category {
-  grid-area: category;
-  display: grid;
-}
-.level {
-  grid-area: level;
-}
-
-.periodic-table li {
+.periodic-table .element {
   list-style: none;
   border: 4px solid var(--bg);
   border-radius: 8px;
@@ -100,9 +86,105 @@
   --bg: var(--color-want-to-learn);
 }
 
-/* input[name='build']:checked ~ :not(li.build) {
+/* Default elements to 0.5 opacity */
+.periodic-table .element {
   opacity: 0.5;
 }
-input[name='build']:checked ~ :not(li.build):hover {
-  transform: unset;
-} */
+
+/* When no element is selected, make them all opaque */
+.periodic-table:not(.build):not(.cloud):not(.databases):not(.framework):not(.interests):not(.library):not(.other):not(.programming-language):not(.saas-paas):not(.server):not(.want-to-learn)
+  .element {
+  opacity: 1;
+}
+
+/*
+  If an element is selected, they are not all unselected, meaning the default
+  case will be triggered, then the selected elements will be opaque
+*/
+
+.periodic-table.build > .build {
+  opacity: 1;
+}
+.periodic-table.cloud > .cloud {
+  opacity: 1;
+}
+.periodic-table.databases > .databases {
+  opacity: 1;
+}
+.periodic-table.framework > .framework {
+  opacity: 1;
+}
+.periodic-table.interests > .interests {
+  opacity: 1;
+}
+.periodic-table.library > .library {
+  opacity: 1;
+}
+.periodic-table.other > .other {
+  opacity: 1;
+}
+.periodic-table.programming-language > .programming-language {
+  opacity: 1;
+}
+.periodic-table.saas-paas > .saas-paas {
+  opacity: 1;
+}
+.periodic-table.server > .server {
+  opacity: 1;
+}
+.periodic-table.want-to-learn > .want-to-learn {
+  opacity: 1;
+}
+
+/* Form */
+
+.periodic-table form {
+  grid-area: frm;
+  display: grid;
+  grid-template-areas: 'categories x message';
+  grid-template-columns: auto minmax(2rem, 1fr) 3fr;
+  align-items: baseline;
+}
+
+.categories {
+  grid-area: categories;
+  display: grid;
+}
+.message {
+  grid-area: message;
+}
+.message h2 {
+  margin: 0;
+}
+.categories label {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+.categories input[type='checkbox'] {
+  opacity: 0;
+}
+.categories div {
+  position: relative;
+  width: 1.5rem;
+  height: 1rem;
+  background: var(--bg);
+}
+.categories input:checked + div:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 9px;
+  width: 6px;
+  height: 14px;
+  border: solid var(--bg);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  filter: contrast(4) invert(1) brightness(2);
+}
+
+.categories :focus-within {
+  outline: 1px dotted rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+}

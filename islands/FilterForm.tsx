@@ -1,24 +1,35 @@
 /** @jsx h */
-import { Fragment, h } from 'preact';
-import { useState } from 'preact/hooks';
-import { Categories } from '../types/categories.ts';
+import { h, JSX } from 'preact';
+import { StateUpdater, useCallback } from 'preact/hooks';
+import { Filters } from './PeriodicTable.tsx';
+import { getUserLanguage, i18n } from '../utils/i18n.ts';
 
-const FilterForm = () => {
+interface Props {
+  setFilter: StateUpdater<Filters>;
+}
+const FilterForm = ({ setFilter }: Props) => {
+  const handleCheckbox = (e: JSX.TargetedEvent<HTMLInputElement, Event>) => {
+    const target = e.target as HTMLInputElement;
+    setFilter((prev) => ({
+      ...prev,
+      [target.name]: target.checked,
+    }));
+  };
+
+  const userCategories = i18n[getUserLanguage()].categories;
+
   return (
-    <Fragment>
-      <form>
-        <div class="category">
-          <input type="checkbox" id="build" name="build" />
-          <label for="build">Build</label>
-          {Object.keys(Categories).map((category) => (
-            <span>{category}</span>
-          ))}
-        </div>
-        <div class="level">
-          <span>Group 2</span>
-        </div>
-      </form>
-    </Fragment>
+    <form>
+      <section class="categories">
+        {Object.entries(userCategories).map(([k, v]) => (
+          <label>
+            <input type="checkbox" name={k} onChange={handleCheckbox} />
+            <div class={k}></div>
+            <span>{v}</span>
+          </label>
+        ))}
+      </section>
+    </form>
   );
 };
 

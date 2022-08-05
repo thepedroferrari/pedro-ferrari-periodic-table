@@ -1,10 +1,10 @@
 /** @jsx h */
 import { h } from 'preact';
-import { ElementName } from '../components/PeriodicTable/ElementName.tsx';
-import { ElementKey } from '../types/element.ts';
-import { Position } from '../types/position.ts';
+import { ElementKey } from '../../types/element.ts';
+import { Position } from '../../types/position.ts';
+import { ElementName } from './ElementName.tsx';
 
-import { elements } from '../constants/constants.ts';
+import { elements } from '../../constants/elements.ts';
 
 interface Props {
   elementKey: ElementKey;
@@ -14,7 +14,7 @@ interface Props {
 const PeriodicTableElement = ({ elementKey, position }: Props) => {
   const element = elements[elementKey];
   return (
-    <li class={element.category} style={{ gridArea: position }}>
+    <li class={`element ${element.category}`} style={{ gridArea: position }}>
       <ElementName element={element} />
     </li>
   );
