@@ -92,7 +92,7 @@
 }
 
 /* When no element is selected, make them all opaque */
-.periodic-table:not(.build):not(.cloud):not(.databases):not(.framework):not(.interests):not(.library):not(.other):not(.programming-language):not(.saas-paas):not(.server):not(.want-to-learn)
+.periodic-table:not(.build):not(.cloud):not(.databases):not(.framework):not(.interests):not(.library):not(.other):not(.programming-language):not(.saas-paas):not(.server):not(.want-to-learn):not(.level-0):not(.level-1):not(.level-2):not(.level-3):not(.level-4):not(.level-5):not(.level-6)
   .element {
   opacity: 1;
 }
@@ -135,13 +135,34 @@
 .periodic-table.want-to-learn > .want-to-learn {
   opacity: 1;
 }
+.periodic-table.level-0 > .level-0 {
+  opacity: 1;
+}
+.periodic-table.level-1 > .level-1 {
+  opacity: 1;
+}
+.periodic-table.level-2 > .level-2 {
+  opacity: 1;
+}
+.periodic-table.level-3 > .level-3 {
+  opacity: 1;
+}
+.periodic-table.level-4 > .level-4 {
+  opacity: 1;
+}
+.periodic-table.level-5 > .level-5 {
+  opacity: 1;
+}
+.periodic-table.level-6 > .level-6 {
+  opacity: 1;
+}
 
 /* Form */
 
 .periodic-table form {
   grid-area: frm;
   display: grid;
-  grid-template-areas: 'categories x message';
+  grid-template-areas: 'categories x levels';
   grid-template-columns: auto minmax(2rem, 1fr) 3fr;
   align-items: baseline;
 }
@@ -150,27 +171,35 @@
   grid-area: categories;
   display: grid;
 }
-.message {
-  grid-area: message;
+.levels {
+  grid-area: levels;
+  row-gap: 8px;
+  display: grid;
 }
-.message h2 {
-  margin: 0;
-}
-.categories label {
+
+.categories label,
+.levels label {
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
 }
-.categories input[type='checkbox'] {
+.categories input[type='checkbox'],
+.levels label input[type='checkbox'] {
   opacity: 0;
 }
-.categories div {
+.categories div,
+.levels div {
   position: relative;
   width: 1.5rem;
   height: 1rem;
   background: var(--bg);
 }
-.categories input:checked + div:after {
+.levels div {
+  border: 1px solid var(--white);
+  height: 1.5rem;
+}
+.categories input:checked + div:after,
+.levels input:checked + div:after {
   content: '';
   display: block;
   position: absolute;
@@ -183,8 +212,6 @@
   transform: rotate(45deg);
   filter: contrast(4) invert(1) brightness(2);
 }
-
-.categories :focus-within {
-  outline: 1px dotted rgba(255, 255, 255, 0.5);
-  text-decoration: underline;
+.levels input:checked + div:after {
+  top: 2px;
 }

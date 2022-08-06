@@ -7,8 +7,9 @@ import { ElementKey } from '../types/element.ts';
 import FilterForm from './FilterForm.tsx';
 
 import { Categories } from '../types/categories.ts';
+import { Levels } from '../constants/levels.ts';
 
-export type Filters = Record<Categories, boolean>;
+export type Filters = Record<Categories | Levels, boolean>;
 const initialFilters: Filters = {
   build: false,
   cloud: false,
@@ -21,17 +22,13 @@ const initialFilters: Filters = {
   'saas-paas': false,
   server: false,
   'want-to-learn': false,
-};
-
-const makeClassFromObject = (obj: Record<string, boolean>) => {
-  let classes = '';
-  Object.entries(obj).forEach(([k, v]) => {
-    if (v) {
-      classes += ` ${k}`;
-    }
-  });
-
-  return classes;
+  0: false,
+  1: false,
+  2: false,
+  3: false,
+  4: false,
+  5: false,
+  6: false,
 };
 
 const PeriodicTable = () => {
@@ -209,3 +206,14 @@ const PeriodicTable = () => {
 };
 
 export default PeriodicTable;
+
+const makeClassFromObject = (obj: Record<string, boolean>) => {
+  let classes = '';
+  Object.entries(obj).forEach(([k, v]) => {
+    if (v) {
+      classes += ` ${k}`;
+    }
+  });
+
+  return classes;
+};

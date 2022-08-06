@@ -16,14 +16,27 @@ const FilterForm = ({ setFilter }: Props) => {
     }));
   };
 
-  const userCategories = i18n[getUserLanguage()].categories;
+  const { categories, levels } = i18n[getUserLanguage()];
 
   return (
     <form>
       <section class="categories">
-        {Object.entries(userCategories).map(([k, v]) => (
+        {Object.entries(categories).map(([k, v]) => (
           <label>
             <input type="checkbox" name={k} onChange={handleCheckbox} />
+            <div class={k}></div>
+            <span>{v}</span>
+          </label>
+        ))}
+      </section>
+      <section class="levels">
+        {Object.entries(levels).map(([k, v]) => (
+          <label>
+            <input
+              type="checkbox"
+              name={`level-${k}`}
+              onChange={handleCheckbox}
+            />
             <div class={k}></div>
             <span>{v}</span>
           </label>

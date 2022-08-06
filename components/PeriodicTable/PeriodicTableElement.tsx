@@ -14,7 +14,10 @@ interface Props {
 const PeriodicTableElement = ({ elementKey, position }: Props) => {
   const element = elements[elementKey];
   return (
-    <li class={`element ${element.category}`} style={{ gridArea: position }}>
+    <li
+      class={`element ${element.category} level-${element.level}`}
+      style={{ gridArea: position }}
+    >
       <ElementName element={element} />
     </li>
   );
