@@ -1,8 +1,8 @@
 /** @jsx h */
 import { h, JSX } from 'preact';
-import { StateUpdater, useCallback } from 'preact/hooks';
-import { Filters } from './PeriodicTable.tsx';
-import { getUserLanguage, i18n } from '../utils/i18n.ts';
+import { StateUpdater } from 'preact/hooks';
+import { Filters } from '../../islands/PeriodicTable.tsx';
+import { getUserLanguage, i18n } from '../../utils/i18n.ts';
 
 interface Props {
   setFilter: StateUpdater<Filters>;
