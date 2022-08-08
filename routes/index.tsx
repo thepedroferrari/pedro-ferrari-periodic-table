@@ -8,7 +8,14 @@ const Head = () => (
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Passionate Frontend Developer" />
     <title>Pedro Ferrari: @thepedroferrari</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      media="print"
+      onLoad={() => {
+        (this as unknown as XMLHttpRequestEventTarget).onload = null;
+        (this as unknown as Element).removeAttribute('media');
+      }}
+      href="https://fonts.googleapis.com"
+    />
     <link
       rel="preconnect"
       href="https://fonts.gstatic.com"
