@@ -15,5 +15,5 @@ export const levels: Record<Levels, string> = {
   3: 'Have worked or built something with it',
   4: 'Works or built multiple things with it',
   5: 'Works with it most days, built enterprise applications with it',
-  6: 'Teaches it.',
+  6: 'Teaches it',
 };

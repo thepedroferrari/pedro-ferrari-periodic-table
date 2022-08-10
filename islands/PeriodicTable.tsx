@@ -1,14 +1,13 @@
 /** @jsx h */
 import { h } from 'preact';
-import { useState, useRef, useEffect } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
+import { Dialog } from '../components/Dialog.tsx';
 import FilterForm from '../components/PeriodicTable/FilterForm.tsx';
 import PeriodicTableElement from '../components/PeriodicTable/PeriodicTableElement.tsx';
 import { PeriodicTableHeader } from '../components/PeriodicTable/PeriodicTableHeader.tsx';
-import { elements } from '../constants/elements.ts';
-import { ElementKey } from '../types/element.ts';
 import { Levels } from '../constants/levels.ts';
 import { Categories } from '../types/categories.ts';
-import { getElementContent } from '../utils/getElementContent.tsx';
+import { ElementKey } from '../types/element.ts';
 
 export type Filters = Record<Categories | Levels, boolean>;
 const initialFilters: Filters = {
@@ -36,16 +35,17 @@ const PeriodicTable = () => {
   const [filter, setFilter] = useState(initialFilters);
   const dialog = useRef<HTMLDialogElement>(null);
 
-  // inert section
-  const [open, setOpen] = useState<ElementKey | null>(null);
+  const openDialog = () => {
+    dialog.current?.showModal();
+  };
 
-  useEffect(() => {
-    if (open) {
-      dialog.current?.showModal();
-    } else {
-      dialog.current?.close();
-    }
-  }, [open]);
+  const [selectedElement, setSelectedElement] = useState<ElementKey | null>(
+    null
+  );
+  const setElementAndOpenDialog = (elementKey: ElementKey) => {
+    setSelectedElement(elementKey);
+    openDialog();
+  };
 
   return (
     <section class={`periodic-table${makeClassFromObject(filter)}`}>
@@ -53,555 +53,555 @@ const PeriodicTable = () => {
       <FilterForm setFilter={setFilter} />
       {/* // FRONTEND? PROGRAMMING LANGUAGES */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.typescript}
         position="a01"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.javascript}
         position="b01"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.python}
         position="c01"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.html}
         position="d01"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.css}
         position="e01"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.elixir}
         position="f01"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.dart}
         position="g01"
       />
 
       {/* // BACKEND? PROGRAMING LANGUAGES */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.java}
         position="a18"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.go}
         position="b18"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.php}
         position="c18"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.bash}
         position="d18"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.ruby}
         position="e18"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.lua}
         position="f18"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.graphql}
         position="g18"
       />
 
       {/* // MAIN FRAMEWORKS */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.react}
         position="b02"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.vue}
         position="c02"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.solid}
         position="d02"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.svelte}
         position="e02"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.angular}
         position="f02"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.flutter}
         position="g02"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.express}
         position="g03"
       />
 
       {/* // FRAMEWORKS OF FRAMEWORKS */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.next}
         position="d03"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.Gatsby}
         position="e03"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey['react-native']}
         position="f03"
       />
 
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.remix}
         position="e04"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.fresh}
         position="e05"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.ionic}
         position="e06"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.nuxt}
         position="e07"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.sveltekit}
         position="e08"
       />
 
       {/* // LIBRARIES */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.redux}
         position="c13"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.apollo}
         position="d12"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.relay}
         position="d13"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.nest}
         position="e12"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.d3}
         position="e13"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.three}
         position="e14"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.prisma}
         position="f12"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.jest}
         position="f13"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.cypress}
         position="f14"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.storybook}
         position="f15"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.trpc}
         position="f16"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.tailwind}
         position="g12"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey['react-query']}
         position="d11"
       />
 
       {/* // OTHER ELEMENTS */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.seo}
         position="f09"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.node}
         position="b14"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.deno}
         position="b15"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.bun}
         position="b16"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.network}
         position="b17"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.sass}
         position="c15"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.rest}
         position="c16"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.git}
         position="c17"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.accessibility}
         position="d16"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.mentoring}
         position="d17"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.image}
         position="e17"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.agile}
         position="f07"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.scrum}
         position="f08"
       />
 
       {/* // BUILD */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.webpack}
         position="g04"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.parcel}
         position="g05"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.vite}
         position="g06"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.snowpack}
         position="g07"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.gulp}
         position="g08"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.grunt}
         position="g09"
       />
 
       {/* // SAAS PAAS */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.docker}
         position="d04"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.jira}
         position="d05"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.codepen}
         position="d06"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.jenkins}
         position="d07"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.kubernetes}
         position="d08"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.optimizely}
         position="e10"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.contentful}
         position="e11"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.sanity}
         position="f10"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.strapi}
         position="f11"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.trello}
         position="d09"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.miro}
         position="d10"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.figma}
         position="e09"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.wordpress}
         position="g10"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.shopify}
         position="g11"
       />
 
       {/* // CLOUD */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.aws}
         position="b13"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.gcp}
         position="c14"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.vercel}
         position="d14"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.netlify}
         position="d15"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.azure}
         position="e15"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.firebase}
         position="e16"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.linode}
         position="f17"
       />
 
       {/* // DATABASES */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.mysql}
         position="g13"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.postgres}
         position="g14"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.redis}
         position="g15"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.firestore}
         position="g16"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.mongo}
         position="g17"
       />
 
       {/* // SERVER */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.apache}
         position="f04"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.nginx}
         position="f05"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.caddy}
         position="f06"
       />
 
       {/* WANT TO LEARN */}
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.tensorflow}
         position="h02"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.rust}
         position="h03"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.edge}
         position="h04"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.webgl}
         position="h05"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.webgpu}
         position="h06"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.astro}
         position="h07"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.clojure}
         position="h08"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.rxjs}
         position="h09"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.flask}
         position="h10"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.cpp}
         position="h11"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.elm}
         position="h12"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.fsharp}
         position="h13"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.Haskell}
         position="h14"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.pytorch}
         position="h15"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.r}
         position="h16"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.typeORM}
         position="h17"
       />
@@ -609,97 +609,86 @@ const PeriodicTable = () => {
       {/* // INTERESTS */}
 
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.blockchain}
         position="i02"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.music}
         position="i03"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.gaming}
         position="i04"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.health}
         position="i05"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.sustainability}
         position="i06"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.science}
         position="i07"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.technology}
         position="i08"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.streaming}
         position="i09"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.design}
         position="i10"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.travel}
         position="i11"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.sports}
         position="i12"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.education}
         position="i13"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.marketing}
         position="i14"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.nonprofit}
         position="i15"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey['privacy-security']}
         position="i16"
       />
       <PeriodicTableElement
-        setOpen={setOpen}
+        setElementAndOpenDialog={setElementAndOpenDialog}
         elementKey={ElementKey.coding}
         position="i17"
       />
-      {open !== null && (
-        <dialog class="dialog" ref={dialog}>
-          {getElementContent(open) === null ? (
-            <section>
-              <h2>{elements[open].name}</h2>
-              <p>Hello</p>
-            </section>
-          ) : (
-            getElementContent(open)
-          )}
-        </dialog>
-      )}
+      <Dialog dialogRef={dialog} selectedElement={selectedElement} />
     </section>
   );
 };

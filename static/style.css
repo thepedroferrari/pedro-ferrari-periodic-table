@@ -15,7 +15,8 @@
 
   gap: 10px;
   grid-template-columns: repeat(var(--periodic-table-columns), 1fr);
-  max-width: 1600px;
+  margin: 0 auto;
+  max-width: fit-content;
 }
 .periodic-table header {
   grid-area: hed;
@@ -30,17 +31,14 @@
   height: 5rem;
   width: 5rem;
   cursor: pointer;
+  text-align: center;
+  font-size: 0.85em;
 }
-.periodic-table > li:hover {
+.periodic-table .element:hover {
   background-color: var(--bg);
   transform: scale(1.5);
   z-index: 1;
   transition: all 0.2s;
-}
-
-.periodic-table > li span {
-  text-align: center;
-  font-size: 0.85em;
 }
 
 /* Hacking variables */
@@ -178,6 +176,10 @@
   display: grid;
 }
 
+.categories label:hover span,
+.levels label:hover span {
+  text-decoration: wavy underline;
+}
 .categories label,
 .levels label {
   display: flex;
@@ -240,14 +242,151 @@
   min-width: 360px;
   overflow-y: scroll;
   max-height: 90vh;
+  opacity: 0;
+}
+
+.dialog[open] {
+  animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 .dialog::backdrop {
-  background: repeating-linear-gradient(
-    30deg,
-    rgba(24, 194, 236, 0.2),
-    rgba(24, 194, 236, 0.2) 1px,
-    rgba(24, 194, 236, 0.3) 1px,
-    rgba(24, 194, 236, 0.3) 20px
-  );
+  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   backdrop-filter: blur(1px);
+}
+
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: repeating-linear-gradient(
+      30deg,
+      rgba(24, 194, 236, 0.2),
+      rgba(24, 194, 236, 0.2) 1px,
+      rgba(24, 194, 236, 0.3) 1px,
+      rgba(24, 194, 236, 0.3) 20px
+    );
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.8) translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1400px) {
+  .periodic-table {
+    zoom: 0.9;
+  }
+}
+
+@media screen and (max-width: 1400px) and (min-width: 1200px) {
+  .periodic-table {
+    zoom: 0.8;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .periodic-table {
+    max-width: 1200px;
+    grid-template-areas:
+      'hed hed hed hed hed hed hed hed'
+      'frm frm frm frm frm frm frm frm'
+      'a01 b01 c01 d01 e01 f01 g01 a18'
+      'b18 c18 d18 e18 f18 g18 b02 c02'
+      'd02 e02 f02 g02 g03 d03 e03 f03'
+      'e04 e05 e06 e07 e08 c13 d12 d13'
+      'e12 e13 e14 f12 f13 f14 f15 f16'
+      'g12 d11 f09 b14 b15 b16 b17 c15'
+      'c16 c17 d16 d17 e17 f07 f08 g04'
+      'g05 g06 g07 g08 g09 d04 d05 d06'
+      'd07 d08 e10 e11 f10 f11 d09 d10'
+      'e09 g10 g11 b13 c14 d14 d15 e15'
+      'e16 f17 g13 g14 g15 g16 g17 f04'
+      'f05 f06 h02 h03 h04 h05 h06 h07'
+      'h08 h09 h10 h11 h12 h13 h14 h15'
+      'h16 h17 i02 i03 i04 i05 i06 i07'
+      'i08 i09 i10 i11 i12 i13 i14 i15'
+      'i16 xxx xxx xxx xxx xxx xxx i17';
+  }
+}
+@media screen and (max-width: 1000px) and (min-width: 769px) {
+  .periodic-table {
+    zoom: 0.8;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .periodic-table {
+    max-width: 768px;
+    grid-template-areas:
+      'hed hed hed hed hed hed'
+      'frm frm frm frm frm frm'
+      'a01 b01 c01 d01 e01 f01'
+      'g01 a18 b18 c18 d18 e18'
+      'f18 g18 b02 c02 d02 e02'
+      'f02 g02 g03 d03 e03 f03'
+      'e04 e05 e06 e07 e08 c13'
+      'd12 d13 e12 e13 e14 f12'
+      'f13 f14 f15 f16 g12 d11'
+      'f09 b14 b15 b16 b17 c15'
+      'c16 c17 d16 d17 e17 f07'
+      'f08 g04 g05 g06 g07 g08'
+      'g09 d04 d05 d06 d07 d08'
+      'e10 e11 f10 f11 d09 d10'
+      'e09 g10 g11 b13 c14 d14'
+      'd15 e15 e16 f17 g13 g14'
+      'g15 g16 g17 f04 f05 f06'
+      'h02 h03 h04 h05 h06 h07'
+      'h08 h09 h10 h11 h12 h13'
+      'h14 h15 h16 h17 i02 i03'
+      'i04 i05 i06 i07 i08 i09'
+      'i10 i11 i12 i13 i14 i15'
+      'i16 xxx xxx xxx xxx i17';
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .periodic-table {
+    max-width: 540px;
+    grid-template-areas:
+      'hed hed hed hed'
+      'frm frm frm frm'
+      'a01 b01 c01 d01'
+      'e01 f01 g01 a18'
+      'b18 c18 d18 e18'
+      'f18 g18 b02 c02'
+      'd02 e02 f02 g02'
+      'g03 d03 e03 f03'
+      'e04 e05 e06 e07'
+      'e08 c13 d12 d13'
+      'e12 e13 e14 f12'
+      'f13 f14 f15 f16'
+      'g12 d11 f09 b14'
+      'b15 b16 b17 c15'
+      'c16 c17 d16 d17'
+      'e17 f07 f08 g04'
+      'g05 g06 g07 g08'
+      'g09 d04 d05 d06'
+      'd07 d08 e10 e11'
+      'f10 f11 d09 d10'
+      'e09 g10 g11 b13'
+      'c14 d14 d15 e15'
+      'e16 f17 g13 g14'
+      'g15 g16 g17 f04'
+      'f05 f06 h02 h03'
+      'h04 h05 h06 h07'
+      'h08 h09 h10 h11'
+      'h12 h13 h14 h15'
+      'h16 h17 i02 i03'
+      'i04 i05 i06 i07'
+      'i08 i09 i10 i11'
+      'i12 i13 i14 i15'
+      'i16 xxx xxx i17';
+  }
 }

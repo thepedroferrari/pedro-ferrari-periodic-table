@@ -1,6 +1,7 @@
 /** @jsx h */
 import { Fragment, h } from 'preact';
 import PeriodicTable from '../islands/PeriodicTable.tsx';
+import { Message } from '../components/Message.tsx';
 
 const Head = () => (
   <head>
@@ -41,6 +42,7 @@ export default function Home() {
       <Head />
       <main>
         <PeriodicTable />
+        <Message />
       </main>
     </Fragment>
   );
