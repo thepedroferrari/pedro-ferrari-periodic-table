@@ -193,7 +193,7 @@
 .categories div,
 .levels div {
   position: relative;
-  width: 1.5rem;
+  min-width: 1.5rem;
   height: 1rem;
   background: var(--bg);
 }
@@ -279,114 +279,27 @@
   }
 }
 
-@media screen and (max-width: 1600px) and (min-width: 1400px) {
+@media screen and (max-width: 1600px) {
   .periodic-table {
-    zoom: 0.9;
+    grid-template-areas: none;
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
   }
-}
-
-@media screen and (max-width: 1400px) and (min-width: 1200px) {
-  .periodic-table {
-    zoom: 0.8;
+  .periodic-table > * {
+    grid-area: unset !important;
   }
-}
-
-@media screen and (max-width: 1200px) {
-  .periodic-table {
-    max-width: 1200px;
-    grid-template-areas:
-      'hed hed hed hed hed hed hed hed'
-      'frm frm frm frm frm frm frm frm'
-      'a01 b01 c01 d01 e01 f01 g01 a18'
-      'b18 c18 d18 e18 f18 g18 b02 c02'
-      'd02 e02 f02 g02 g03 d03 e03 f03'
-      'e04 e05 e06 e07 e08 c13 d12 d13'
-      'e12 e13 e14 f12 f13 f14 f15 f16'
-      'g12 d11 f09 b14 b15 b16 b17 c15'
-      'c16 c17 d16 d17 e17 f07 f08 g04'
-      'g05 g06 g07 g08 g09 d04 d05 d06'
-      'd07 d08 e10 e11 f10 f11 d09 d10'
-      'e09 g10 g11 b13 c14 d14 d15 e15'
-      'e16 f17 g13 g14 g15 g16 g17 f04'
-      'f05 f06 h02 h03 h04 h05 h06 h07'
-      'h08 h09 h10 h11 h12 h13 h14 h15'
-      'h16 h17 i02 i03 i04 i05 i06 i07'
-      'i08 i09 i10 i11 i12 i13 i14 i15'
-      'i16 xxx xxx xxx xxx xxx xxx i17';
+  .periodic-table > form,
+  .periodic-table > header {
+    grid-column: 1 / -1 !important;
   }
-}
-@media screen and (max-width: 1000px) and (min-width: 769px) {
-  .periodic-table {
-    zoom: 0.8;
+  .periodic-table > form {
+    grid-template-areas: 'categories levels';
+    grid-template-columns: auto 3fr;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .periodic-table {
-    max-width: 768px;
-    grid-template-areas:
-      'hed hed hed hed hed hed'
-      'frm frm frm frm frm frm'
-      'a01 b01 c01 d01 e01 f01'
-      'g01 a18 b18 c18 d18 e18'
-      'f18 g18 b02 c02 d02 e02'
-      'f02 g02 g03 d03 e03 f03'
-      'e04 e05 e06 e07 e08 c13'
-      'd12 d13 e12 e13 e14 f12'
-      'f13 f14 f15 f16 g12 d11'
-      'f09 b14 b15 b16 b17 c15'
-      'c16 c17 d16 d17 e17 f07'
-      'f08 g04 g05 g06 g07 g08'
-      'g09 d04 d05 d06 d07 d08'
-      'e10 e11 f10 f11 d09 d10'
-      'e09 g10 g11 b13 c14 d14'
-      'd15 e15 e16 f17 g13 g14'
-      'g15 g16 g17 f04 f05 f06'
-      'h02 h03 h04 h05 h06 h07'
-      'h08 h09 h10 h11 h12 h13'
-      'h14 h15 h16 h17 i02 i03'
-      'i04 i05 i06 i07 i08 i09'
-      'i10 i11 i12 i13 i14 i15'
-      'i16 xxx xxx xxx xxx i17';
-  }
-}
 
-@media screen and (max-width: 540px) {
-  .periodic-table {
-    max-width: 540px;
-    grid-template-areas:
-      'hed hed hed hed'
-      'frm frm frm frm'
-      'a01 b01 c01 d01'
-      'e01 f01 g01 a18'
-      'b18 c18 d18 e18'
-      'f18 g18 b02 c02'
-      'd02 e02 f02 g02'
-      'g03 d03 e03 f03'
-      'e04 e05 e06 e07'
-      'e08 c13 d12 d13'
-      'e12 e13 e14 f12'
-      'f13 f14 f15 f16'
-      'g12 d11 f09 b14'
-      'b15 b16 b17 c15'
-      'c16 c17 d16 d17'
-      'e17 f07 f08 g04'
-      'g05 g06 g07 g08'
-      'g09 d04 d05 d06'
-      'd07 d08 e10 e11'
-      'f10 f11 d09 d10'
-      'e09 g10 g11 b13'
-      'c14 d14 d15 e15'
-      'e16 f17 g13 g14'
-      'g15 g16 g17 f04'
-      'f05 f06 h02 h03'
-      'h04 h05 h06 h07'
-      'h08 h09 h10 h11'
-      'h12 h13 h14 h15'
-      'h16 h17 i02 i03'
-      'i04 i05 i06 i07'
-      'i08 i09 i10 i11'
-      'i12 i13 i14 i15'
-      'i16 xxx xxx i17';
+  .periodic-table > form {
+    grid-template-areas: 'categories' 'levels';
+    grid-template-columns: unset;
   }
-}
